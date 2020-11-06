@@ -1,0 +1,31 @@
+# Custom
+printWidth: 120
+semi: false
+singleQuote: true
+trailingComma: 'all'
+parser: 'babel-ts'
+
+# DEFAULTS:
+# Although the following are the default values (as 2.0.5)
+# they are added here for reference
+tabWidth: 2
+useTabs: false
+quoteProps: 'as-needed'
+jsxSingleQuote: false
+bracketSpacing: true
+jsxBracketSameLine: false
+arrowParens: 'always'
+requirePragma: false
+insertPragma: false
+proseWrap: 'preserve'
+htmlWhitespaceSensitivity: 'css'
+vueIndentScriptAndStyle: false
+endOfLine: 'lf'
+
+overrides:
+  - files: '*.json'
+    options:
+      parser: 'json'
+  - files: '{.*,*}.yaml'
+    options:
+      parser: 'yaml'

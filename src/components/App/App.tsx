@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 
 export const App = () => {
   const [data, setData] = useState()
@@ -10,16 +10,12 @@ export const App = () => {
         const json = await response.json()
         setData(json)
       }
-      
+
       getData()
     } catch (err) {
       console.error()
     }
   }, [])
 
-  return (
-    <div>
-      {data ? <pre>{JSON.stringify(data, null, 2)}</pre> : <p>No data</p>}
-    </div>
-  );
+  return <div>{data ? <pre>{JSON.stringify(data, null, 2)}</pre> : <p>No data</p>}</div>
 }
