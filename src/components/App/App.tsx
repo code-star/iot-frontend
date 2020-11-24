@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Map } from '../Map/Map'
 import { Sensor, SensorEntry, SensorJSON } from '../../API/Sensor/Sensor'
-import iotJson from '../../iot.json'
+// import iotJson from '../../iot.json'
 
 const getData = async () => {
   try {
