@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 
-import ReactMapGL from 'react-map-gl'
-import { Sensor } from '../../ApI/Sensor/Sensor'
+import ReactMapGL, { Marker } from 'react-map-gl'
+import { Sensor } from '../../API/Sensor/Sensor'
 
 const TOKEN = 'pk.eyJ1IjoiY29kZXN0YXItaW90IiwiYSI6ImNraDZjeTRjcTA5Z2Eyd281djNnc2d3eHUifQ.VcY4aGyFHBQo_r701-3A_A'
 
@@ -20,7 +20,7 @@ type MapViewport = Readonly<{
 const defaultViewport: MapViewport = {
   latitude: -1.9444,
   longitude: 30.0616,
-  zoom: 7.8,
+  zoom: 15,
   bearing: 0,
   pitch: 0,
 }
@@ -32,7 +32,9 @@ const getFirstSensorData = (sensors: Sensor[]): MapViewport => {
 
   const {
     coordinates: [lat, lng],
-  } = sensors[0]
+  } = sensors.filter((entry) => {
+    return entry.coordinates[0] > 0
+  })[0]
 
   return {
     ...defaultViewport,
@@ -41,8 +43,22 @@ const getFirstSensorData = (sensors: Sensor[]): MapViewport => {
   }
 }
 
-export const Map = (props: MapProps) => {
-  const [viewport, setViewport] = useState(getFirstSensorData(props.sensorsData))
+const Markers: FC<MapProps> = ({ sensorsData }) => {
+  return (
+    <>
+      {sensorsData
+        .filter((entry) => entry.coordinates[0] > 0)
+        .map(({ coordinates: [lat, lng] }, index) => (
+          <Marker key={index} longitude={lng} latitude={lat}>
+            x
+          </Marker>
+        ))}
+    </>
+  )
+}
+
+export const Map: FC<MapProps> = ({ sensorsData }) => {
+  const [viewport, setViewport] = useState(getFirstSensorData(sensorsData))
 
   return (
     <div className="mapbox-react">
@@ -53,7 +69,9 @@ export const Map = (props: MapProps) => {
         mapStyle="mapbox://styles/mapbox/streets-v11"
         onViewportChange={(nextViewport) => setViewport(nextViewport)}
         mapboxApiAccessToken={TOKEN}
-      />
+      >
+        <Markers sensorsData={sensorsData} />
+      </ReactMapGL>
     </div>
   )
 }
