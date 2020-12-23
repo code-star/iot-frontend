@@ -18,7 +18,9 @@
 //   }
 // ],
 
-type SensorEntryLine = { bn: string, bt: number, n?: string, u?: string, v?:number } | { n: string, u?:string, v?:number, vs?:string };
+type SensorEntryLine =
+  | { bn: string; bt: number; n?: string; u?: string; v?: number }
+  | { n: string; u?: string; v?: number; vs?: string }
 
 export type SensorEntry = SensorEntryLine[]
 
@@ -27,9 +29,10 @@ export type SensorEntry = SensorEntryLine[]
 //   coordinates: [number, number]
 // }>
 
-export type SensorJSON = Readonly<SensorEntry[]>;
+export type SensorJSON = Readonly<SensorEntry[]>
 
 export type Sensor = Readonly<{
   temperature: number
   coordinates: [number, number]
+  sound: number
 }>

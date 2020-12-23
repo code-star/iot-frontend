@@ -10,23 +10,25 @@ const getData = async () => {
     // TODO it would be much better to use RxJS to do this
     const sensorData: Sensor[] = json
       .filter((entry: SensorEntry) => {
-        if(entry.find) {
+        if (entry.find) {
           const latitude = entry.find((line) => line.n === 'latitude')?.v ?? 0
           const temperature = entry.find((line) => line.n === 'temperature')?.v ?? 0
-          return latitude || temperature  
+          return latitude || temperature
         }
-        return false;
+        return false
       })
       .map((entry: SensorEntry) => {
         const latitude = entry.find((line) => line.n === 'latitude')?.v ?? 0
         const longitude = entry.find((line) => line.n === 'longitude')?.v ?? 0
         const temperature = entry.find((line) => line.n === 'temperature')?.v ?? 0
+        const sound = entry.find((line) => line.n === 'sound')?.v ?? 0
         return {
           temperature,
           coordinates: [latitude, longitude],
+          sound,
         }
-      });
-      return sensorData
+      })
+    return sensorData
   } catch (err) {
     console.error(err)
     return []
@@ -43,7 +45,7 @@ export const App = () => {
       // const sensorData: Sensor[] = []
       setSensorsData(sensorData)
       if (sensorData.length === 0) {
-        console.warn("Initial sensorData was empty, so progressively injecting fake data");
+        console.warn('Initial sensorData was empty, so progressively injecting fake data')
         fakeDataTimer = await addFakeData()
       }
     }
