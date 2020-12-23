@@ -44,46 +44,19 @@ const getFirstSensorData = (sensors: Sensor[]): MapViewport => {
   }
 }
 
-type SensorData = Sensor &
-  Readonly<{
-    showDetails: boolean
-  }>
-
-function mapSensorsData(sensors: Sensor[]) {
-  console.log(sensors)
-  return sensors.reduce<Record<string, SensorData>>(
-    (acc, curr, index) => ({
-      ...acc,
-      [index.toString()]: {
-        ...curr,
-        showDetails: false,
-      },
-    }),
-    {},
-  )
-}
-
 const Markers: FC<MapProps> = ({ sensorsData }) => {
-  const [data, setData] = useState<Record<string, SensorData>>(() => mapSensorsData(sensorsData))
+  const [visibleSensorIndex, setVibleSensorIndex] = useState<number | null>(null)
 
-  const toggleShowDetails = (index: string) => () => {
-    setData((data) => ({
-      ...data,
-      [index]: {
-        ...data[index],
-        showDetails: !data[index].showDetails,
-      },
-    }))
+  const toggleShowDetails = (index: number) => () => {
+    setVibleSensorIndex((prevIndex) => (index === prevIndex ? null : index))
   }
 
   return (
     <>
-      {Object.entries(data)
-        .filter(([, sensorData]) => sensorData.coordinates[0] > 0)
-        .map(([index, sensorData]) => {
+      {sensorsData
+        .filter((sensorData) => sensorData.coordinates[0] > 0)
+        .map((sensorData, index) => {
           const {
-            showDetails,
-            temperature,
             coordinates: [lat, lng],
           } = sensorData
 
@@ -91,9 +64,9 @@ const Markers: FC<MapProps> = ({ sensorsData }) => {
             <Marker key={index} className={styles.marker} longitude={lng} latitude={lat}>
               <span onClick={toggleShowDetails(index)}>
                 <span>📍</span>
-                {showDetails ? (
+                {visibleSensorIndex === index ? (
                   <div className={styles.details}>
-                    <p>Temperature: {temperature}</p>
+                    <pre>{JSON.stringify(sensorData, null, 2)}</pre>
                   </div>
                 ) : null}
               </span>
