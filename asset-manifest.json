@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/iot-frontend/static/css/main.a3cda69c.chunk.css",
-    "main.js": "/iot-frontend/static/js/main.2e09647f.chunk.js",
-    "main.js.map": "/iot-frontend/static/js/main.2e09647f.chunk.js.map",
-    "runtime-main.js": "/iot-frontend/static/js/runtime-main.9a9cee7d.js",
-    "runtime-main.js.map": "/iot-frontend/static/js/runtime-main.9a9cee7d.js.map",
-    "static/js/2.637fdf7a.chunk.js": "/iot-frontend/static/js/2.637fdf7a.chunk.js",
-    "static/js/2.637fdf7a.chunk.js.map": "/iot-frontend/static/js/2.637fdf7a.chunk.js.map",
-    "static/js/3.c0b8476b.chunk.js": "/iot-frontend/static/js/3.c0b8476b.chunk.js",
-    "static/js/3.c0b8476b.chunk.js.map": "/iot-frontend/static/js/3.c0b8476b.chunk.js.map",
+    "main.js": "/iot-frontend/static/js/main.4336ee1b.chunk.js",
+    "main.js.map": "/iot-frontend/static/js/main.4336ee1b.chunk.js.map",
+    "runtime-main.js": "/iot-frontend/static/js/runtime-main.80c0ff72.js",
+    "runtime-main.js.map": "/iot-frontend/static/js/runtime-main.80c0ff72.js.map",
+    "static/js/2.48191ae4.chunk.js": "/iot-frontend/static/js/2.48191ae4.chunk.js",
+    "static/js/2.48191ae4.chunk.js.map": "/iot-frontend/static/js/2.48191ae4.chunk.js.map",
+    "static/js/3.ffaa6816.chunk.js": "/iot-frontend/static/js/3.ffaa6816.chunk.js",
+    "static/js/3.ffaa6816.chunk.js.map": "/iot-frontend/static/js/3.ffaa6816.chunk.js.map",
     "index.html": "/iot-frontend/index.html",
     "static/css/main.a3cda69c.chunk.css.map": "/iot-frontend/static/css/main.a3cda69c.chunk.css.map",
-    "static/js/2.637fdf7a.chunk.js.LICENSE.txt": "/iot-frontend/static/js/2.637fdf7a.chunk.js.LICENSE.txt"
+    "static/js/2.48191ae4.chunk.js.LICENSE.txt": "/iot-frontend/static/js/2.48191ae4.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.9a9cee7d.js",
-    "static/js/2.637fdf7a.chunk.js",
+    "static/js/runtime-main.80c0ff72.js",
+    "static/js/2.48191ae4.chunk.js",
     "static/css/main.a3cda69c.chunk.css",
-    "static/js/main.2e09647f.chunk.js"
+    "static/js/main.4336ee1b.chunk.js"
   ]
 }
