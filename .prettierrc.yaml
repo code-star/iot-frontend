@@ -29,3 +29,6 @@ overrides:
   - files: '{.*,*}.yaml'
     options:
       parser: 'yaml'
+  - files: '*.scss'
+    options:
+      parser: scss

@@ -1,0 +1,14 @@
+.marker {
+  &:hover {
+    cursor: pointer !important;
+  }
+
+  .details {
+    background-color: white;
+    padding: 5px;
+
+    p {
+      white-space: nowrap;
+    }
+  }
+}
